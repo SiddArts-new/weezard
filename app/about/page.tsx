@@ -1,0 +1,139 @@
+'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { HyperText } from '@/components/ui/hyper-text'
+import Footer from '@/app/components/Footer'
+import { PatternBackground } from '@/components/ui/pattern-background'
+import { GifIcon } from '@/components/ui/gif-icon'
+import { AnimatedUnderline } from '@/components/ui/animated-underline'
+
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen relative">
+      <PatternBackground />
+      
+      {/* Hero Section */}
+      <section className="relative h-[60vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/30 z-10" />
+        
+        <div className="relative z-20 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-4"
+          >
+            <HyperText>Weezard.YOU KNOW THE WHAT.WE KNOW THE HOW.</HyperText>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-white max-w-3xl mx-auto"
+          >
+            Reach wider audiences with content built to scale
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { 
+                title: 'Photography',
+                icon: <GifIcon src="/photography.gif" alt="Photography" size={64} />
+              },
+              { 
+                title: 'Video',
+                icon: <GifIcon src="/video.gif" alt="Video" size={64} />
+              },
+              { 
+                title: 'Animation',
+                icon: <GifIcon src="/animation.gif" alt="Animation" size={64} />
+              },
+              { 
+                title: 'UGC',
+                icon: <GifIcon src="/ugc.gif" alt="UGC" size={64} />
+              },
+              { 
+                title: 'Production',
+                icon: <GifIcon src="/production.gif" alt="Production" size={64} />
+              },
+              { 
+                title: 'Design',
+                icon: <GifIcon src="/design.gif" alt="Design" size={64} />
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-[#4ae06b]/50 cursor-pointer"
+              >
+                <div className="flex justify-center mb-6">
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl font-semibold mb-2 text-white text-center group-hover:text-[#4ae06b] transition-colors duration-300">
+                  <AnimatedUnderline>
+                    {service.title}
+                  </AnimatedUnderline>
+                </h3>
+                <p className="text-white/90 text-center">
+                  Professional {service.title.toLowerCase()} services tailored to your needs
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Content */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center bg-white/10 backdrop-blur-sm p-12 rounded-lg border border-white/20">
+            <h2 className="text-4xl font-bold mb-8 text-white">
+              <AnimatedUnderline>A space made for more</AnimatedUnderline>
+            </h2>
+            <p className="text-xl text-white/90 mb-8">
+              Room to get more creative. Built to create more content. We're ready with all the equipment, 
+              expertise and unique spaces to bring every stage of your story to life.
+            </p>
+            <p className="text-xl text-white/90">
+              We share a roof, a wall and a strong disbelief in compartmentalizing creativity. 
+              With easy access to art directors, set stylists, writers and other specialists, 
+              we leave nothing to be desired for your brand.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4 text-center">
+          <div className="bg-white/10 backdrop-blur-sm p-12 rounded-lg border border-white/20">
+            <h2 className="text-4xl font-bold mb-8 text-white">
+              <AnimatedUnderline>Ready to collaborate?</AnimatedUnderline>
+            </h2>
+            <Link
+              href="/contact"
+              className="inline-block group/contact relative"
+            >
+              <span className="block bg-[#4ae06b] text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-[#4ae06b]/90 transition-colors">
+                <AnimatedUnderline className="py-1">Get in Touch</AnimatedUnderline>
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  )
+} 
