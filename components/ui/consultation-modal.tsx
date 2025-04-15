@@ -112,7 +112,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
       </AnimatePresence>
 
       <Toast
-        message="Thank you! We'll get back to you soon."
+        message="Your consultation request has been sent successfully! We'll contact you shortly."
         isVisible={showToast}
         onClose={() => setShowToast(false)}
       />
