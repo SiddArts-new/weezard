@@ -29,25 +29,27 @@ const Hero = () => {
 
   return (
     <>
-      <div className="container mx-auto py-16">
+      <div className="container mx-auto py-8 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h1 className="text-5xl font-bold leading-tight mb-6 dark:text-white">
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 md:mb-6 dark:text-white">
               Navigating the digital landscape for success
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 md:mb-8">
               Our digital marketing agency helps businesses achieve their goals through comprehensive marketing services including SEO, PPC, social media marketing, and content creation.
             </p>
-            <InteractiveHoverButton 
-              className="bg-black text-white top-8 dark:border-gray-700"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Book a consultation
-            </InteractiveHoverButton>
+            <div className="flex justify-center md:justify-start">
+              <InteractiveHoverButton 
+                className="bg-black text-white top-8 dark:border-gray-700"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Book a consultation
+              </InteractiveHoverButton>
+            </div>
           </div>
           
-          <div className="relative">
-            <div className="relative w-full h-[400px]">
+          <div className="relative order-first md:order-last">
+            <div className="relative w-full h-[300px] md:h-[400px]">
               <Suspense fallback={
                 <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
                   <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-[#3ee366] rounded-full animate-spin" />
@@ -62,13 +64,13 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="mt-16 space-y-4 relative">
-          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
+        <div className="mt-12 md:mt-16 space-y-4 relative">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 dark:text-white">
             Our Customers
           </h2>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent" />
+            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent" />
             <VelocityScroll 
               defaultVelocity={3} 
               numRows={2} 
@@ -76,13 +78,13 @@ const Hero = () => {
             >
               {COMPANIES.map((company, index) => (
                 <React.Fragment key={company.name}>
-                  <span className="inline-flex items-center mx-6" style={{ color: company.color }}>
+                  <span className="inline-flex items-center mx-3 md:mx-6" style={{ color: company.color }}>
                     <CompanyLogo
                       src={company.logo}
                       alt={`${company.name} logo`}
                       color={company.color}
                     />
-                    <span className="text-2xl font-medium ml-3">{company.name}</span>
+                    <span className="text-xl md:text-2xl font-medium ml-2 md:ml-3">{company.name}</span>
                   </span>
                 </React.Fragment>
               ))}

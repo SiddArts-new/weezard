@@ -9,7 +9,7 @@ const services = [
     icon: '📈',
     color: 'bg-blue-50 dark:bg-blue-900/50',
     textColor: 'text-blue-600 dark:text-blue-400',
-    grid: 'col-span-2 row-span-1'
+    grid: 'col-span-2 md:col-span-2 row-span-1'
   },
   {
     title: 'SEO Optimization',
@@ -17,7 +17,7 @@ const services = [
     icon: '🔍',
     color: 'bg-green-50 dark:bg-green-900/50',
     textColor: 'text-green-600 dark:text-green-400',
-    grid: 'col-span-1 row-span-3'
+    grid: 'col-span-2 md:col-span-1 row-span-1 md:row-span-3'
   },
   {
     title: 'Social Media',
@@ -25,7 +25,7 @@ const services = [
     icon: '📱',
     color: 'bg-purple-50 dark:bg-purple-900/50',
     textColor: 'text-purple-600 dark:text-purple-400',
-    grid: 'col-span-1 row-span-1'
+    grid: 'col-span-2 md:col-span-1 row-span-1'
   },
   {
     title: 'Content Creation',
@@ -33,7 +33,7 @@ const services = [
     icon: '✍️',
     color: 'bg-yellow-50 dark:bg-yellow-900/50',
     textColor: 'text-yellow-600 dark:text-yellow-400',
-    grid: 'col-span-1 row-span-1'
+    grid: 'col-span-2 md:col-span-1 row-span-1'
   },
   {
     title: 'Analytics',
@@ -41,27 +41,27 @@ const services = [
     icon: '📊',
     color: 'bg-red-50 dark:bg-red-900/50',
     textColor: 'text-red-600 dark:text-red-400',
-    grid: 'col-span-2 row-span-1'
+    grid: 'col-span-2 md:col-span-2 row-span-1'
   }
 ]
 
 export default function Services() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
-      <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">Our Services</h2>
-      <div className="grid grid-cols-3 grid-rows-3 gap-4 max-w-6xl mx-auto px-4">
+    <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-900">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 dark:text-white">Our Services</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-3 gap-4 max-w-6xl mx-auto px-4">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`${service.grid} ${service.color} p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg`}
+            className={`${service.grid} ${service.color} p-4 md:p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg`}
           >
             <div className="flex flex-col h-full">
-              <span className={`text-4xl mb-4 ${service.textColor}`}>{service.icon}</span>
-              <h3 className="text-xl font-semibold mb-2 dark:text-white">{service.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+              <span className={`text-3xl md:text-4xl mb-3 md:mb-4 ${service.textColor}`}>{service.icon}</span>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">{service.title}</h3>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">{service.description}</p>
             </div>
           </motion.div>
         ))}

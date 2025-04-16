@@ -52,9 +52,9 @@ const tiers = [
 export default function Pricing() {
   return (
     <div className="w-full bg-gray-50 dark:bg-gray-900">
-      <section className="container mx-auto py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">Our Pricing</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <section className="container mx-auto py-12 md:py-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 dark:text-white">Our Pricing</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto px-4">
           {tiers.map((tier, index) => (
             <motion.div
               key={tier.name}
@@ -71,7 +71,7 @@ export default function Pricing() {
                 ease: [0.4, 0, 0.2, 1]
               }}
               className={cn(
-                "relative bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 h-full flex flex-col",
+                "relative bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 h-full flex flex-col",
                 tier.popular ? "shadow-xl hover:shadow-2xl z-10" : "shadow-sm hover:shadow-md"
               )}
             >
@@ -81,24 +81,26 @@ export default function Pricing() {
                 </div>
               )}
               <div className="flex flex-col h-full">
-                <h3 className="text-xl font-semibold mb-2 dark:text-white">{tier.name}</h3>
+                <h3 className="text-lg md:text-xl font-semibold mb-2 dark:text-white">{tier.name}</h3>
                 <div className="mb-4">
-                  <span className="text-4xl font-bold dark:text-white">${tier.price}</span>
+                  <span className="text-3xl md:text-4xl font-bold dark:text-white">${tier.price}</span>
                   <span className="text-gray-600 dark:text-gray-400">/month</span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">{tier.description}</p>
-                <ul className="space-y-3 mb-8 flex-grow">
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6">{tier.description}</p>
+                <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2">
-                      <Check className="h-5 w-5 text-green-500" />
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500" />
+                      <span className="text-sm md:text-base text-gray-600 dark:text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-auto">
                   {tier.name === 'Professional' ? (
                     <Link href="/sorry">
-                      <SparkleButton className="bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white">Get Started</SparkleButton>
+                      <SparkleButton className="w-full bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white">
+                        Get Started
+                      </SparkleButton>
                     </Link>
                   ) : (
                     <Link href="/sorry">

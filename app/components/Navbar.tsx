@@ -64,6 +64,7 @@ export const Navbar = () => {
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
   const [isScrolling, setIsScrolling] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
   let scrollTimeout: NodeJS.Timeout
 
@@ -98,85 +99,162 @@ export const Navbar = () => {
           <Link href="/" className="text-xl font-bold dark:text-white">
             Weezard
           </Link>
-          <TooltipProvider>
-            <div className="flex h-16 items-end gap-4 rounded-2xl bg-black/5 dark:bg-white/5 ">
-              <Dock>
-                {[
-                  <DockIcon key="home">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link
-                          href="/"
-                          aria-label="Home"
-                          className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
-                        >
-                          <HomeIcon className="h-4 w-4 dark:text-white" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Home</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </DockIcon>,
-                  <DockIcon key="theme">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button
-                          onClick={toggleTheme}
-                          className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
-                          aria-label="Toggle theme"
-                        >
-                          {theme === 'light' ? (
-                            <Moon className="h-4 w-4" />
-                          ) : (
-                            <Sun className="h-4 w-4 text-white" />
-                          )}
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Toggle theme</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </DockIcon>,
-                  <DockIcon key="blog">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link
-                          href="/about"
-                          aria-label="Blog"
-                          className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
-                        >
-                          <PencilIcon className="h-4 w-4 dark:text-white" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Blog</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </DockIcon>,
-                  ...Object.entries(SOCIAL).map(([name, social]) => (
-                    <DockIcon key={name}>
+          
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            <svg
+              className="w-6 h-6 dark:text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop menu */}
+          <div className="hidden md:block">
+            <TooltipProvider>
+              <div className="flex h-16 items-end gap-4 rounded-2xl bg-black/5 dark:bg-white/5">
+                <Dock>
+                  {[
+                    <DockIcon key="home">
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Link
-                            href={social.url}
-                            aria-label={social.name}
+                            href="/"
+                            aria-label="Home"
                             className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
                           >
-                            <social.icon className="h-4 w-4 dark:text-white" />
+                            <HomeIcon className="h-4 w-4 dark:text-white" />
                           </Link>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>{name}</p>
+                          <p>Home</p>
                         </TooltipContent>
                       </Tooltip>
-                    </DockIcon>
-                  ))
-                ]}
-              </Dock>
-            </div>
-          </TooltipProvider>
+                    </DockIcon>,
+                    <DockIcon key="theme">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            onClick={toggleTheme}
+                            className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
+                            aria-label="Toggle theme"
+                          >
+                            {theme === 'light' ? (
+                              <Moon className="h-4 w-4" />
+                            ) : (
+                              <Sun className="h-4 w-4 text-white" />
+                            )}
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Toggle theme</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </DockIcon>,
+                    <DockIcon key="blog">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Link
+                            href="/about"
+                            aria-label="Blog"
+                            className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
+                          >
+                            <PencilIcon className="h-4 w-4 dark:text-white" />
+                          </Link>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Blog</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </DockIcon>,
+                    ...Object.entries(SOCIAL).map(([name, social]) => (
+                      <DockIcon key={name}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link
+                              href={social.url}
+                              aria-label={social.name}
+                              className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/5"
+                            >
+                              <social.icon className="h-4 w-4 dark:text-white" />
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{name}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </DockIcon>
+                    ))
+                  ]}
+                </Dock>
+              </div>
+            </TooltipProvider>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        <motion.div
+          initial={false}
+          animate={{ height: isMobileMenuOpen ? "auto" : 0 }}
+          className="md:hidden overflow-hidden"
+        >
+          <div className="py-4 space-y-4">
+            {LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex items-center gap-2 p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
+              >
+                <link.icon className="h-5 w-5 dark:text-white" />
+                <span className="dark:text-white">{link.label}</span>
+              </Link>
+            ))}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 w-full"
+            >
+              {theme === 'light' ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5 text-white" />
+              )}
+              <span className="dark:text-white">Toggle theme</span>
+            </button>
+            {Object.entries(SOCIAL).map(([name, social]) => (
+              <Link
+                key={name}
+                href={social.url}
+                className="flex items-center gap-2 p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
+              >
+                <div className="w-5 h-5 flex items-center justify-center">
+                  <social.icon className="h-5 w-5 dark:text-white" />
+                </div>
+                <span className="dark:text-white">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
       </nav>
     </motion.header>
   )
