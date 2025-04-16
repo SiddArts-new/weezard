@@ -19,7 +19,7 @@ export function GifIcon({
   const [isHovered, setIsHovered] = useState(false);
   
   // Convert GIF src to static image src (first frame)
-  const staticSrc = src.replace('.gif', '.gif#0'); // This gets the first frame
+  const staticSrc = src.replace('.gif', '.png'); // We'll use a static PNG version
 
   return (
     <div 

@@ -7,12 +7,13 @@ import Link from 'next/link'
 import { HyperText } from '@/components/ui/hyper-text'
 import Footer from '@/app/components/Footer'
 import { PatternBackground } from '@/components/ui/pattern-background'
-import { GifIcon } from '@/components/ui/gif-icon'
 import { AnimatedUnderline } from '@/components/ui/animated-underline'
+import Script from 'next/script'
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen relative">
+      <Script src="https://cdn.lordicon.com/lordicon.js" />
       <PatternBackground />
       
       {/* Hero Section */}
@@ -46,27 +47,87 @@ export default function AboutPage() {
             {[
               { 
                 title: 'Photography',
-                icon: <GifIcon src="/photography.gif" alt="Photography" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/wsaaegar.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               },
               { 
                 title: 'Video',
-                icon: <GifIcon src="/video.gif" alt="Video" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/ugllxeyl.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               },
               { 
                 title: 'Animation',
-                icon: <GifIcon src="/animation.gif" alt="Animation" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/dvrtzmia.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               },
               { 
                 title: 'UGC',
-                icon: <GifIcon src="/ugc.gif" alt="UGC" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/fikcyfpp.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               },
               { 
                 title: 'Production',
-                icon: <GifIcon src="/production.gif" alt="Production" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/tamskqkf.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               },
               { 
                 title: 'Design',
-                icon: <GifIcon src="/design.gif" alt="Design" size={64} />
+                icon: (
+                  <div className="relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300" 
+                       style={{ width: 96, height: 96 }}>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/exymduqj.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#3ee366"
+                      style={{ width: 64, height: 64 }}
+                    />
+                  </div>
+                )
               }
             ].map((service, index) => (
               <motion.div

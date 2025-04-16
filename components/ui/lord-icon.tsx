@@ -17,7 +17,7 @@ interface LordIconProps {
 export function LordIcon({ 
   src, 
   trigger = "hover",
-  colors = { primary: "#121331", secondary: "#4ae06b" },
+  colors = { primary: "#121331", secondary: "#3ee366" },
   size = 250,
   className 
 }: LordIconProps) {
