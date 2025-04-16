@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="md:text-right flex flex-col items-end gap-4">
             {/* Companion Selector */}
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium">Companions:</span>
+              <span className="text-sm font-medium">Cursor Companions:</span>
               <div className="flex gap-2">
                 <button
                   onClick={() => handleCompanionToggle('wizard')}
