@@ -61,7 +61,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ 
                 opacity: 1, 
-                y: tier.popular ? -10 : 0,
+                y: tier.popular ? -3 : 0,
                 scale: tier.popular ? 1.05 : 1
               }}
               viewport={{ once: false, margin: "-100px" }}
