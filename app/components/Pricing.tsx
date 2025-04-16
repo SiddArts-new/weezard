@@ -92,11 +92,11 @@ export default function Pricing() {
                 </ul>
                 {tier.name === 'Professional' ? (
                   <Link href="/sorry">
-                    <SparkleButton>Get Started</SparkleButton>
+                    <SparkleButton className="bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white">Get Started</SparkleButton>
                   </Link>
                 ) : (
                   <Link href="/sorry">
-                    <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-white dark:text-black hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
+                    <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
                       Get Started
                     </button>
                   </Link>

@@ -55,7 +55,7 @@ const SOCIAL = {
   },
   Email: {
     name: "Send Email",
-    url: "mailto:siddharthdev26@gmail.com",
+    url: "#",
     icon: Icons.email,
   },
 }
