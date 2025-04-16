@@ -11,7 +11,7 @@ export function AnimatedUnderline({ children, className }: AnimatedUnderlineProp
   return (
     <span className={cn("group/underline relative inline-block", className)}>
       {children}
-      <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#4ae06b] transition-all duration-300 ease-out group-hover/underline:w-full" />
+      <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#3ee366] transition-all duration-300 ease-out group-hover/underline:w-full" />
     </span>
   )
 } 

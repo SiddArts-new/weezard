@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,8 +10,11 @@ import { PatternBackground } from '@/components/ui/pattern-background'
 import { AnimatedUnderline } from '@/components/ui/animated-underline'
 import { LordIcon } from '@/components/ui/lord-icon'
 import Script from 'next/script'
+import { ConsultationModal } from '@/components/ui/consultation-modal'
 
 export default function AboutPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div className="min-h-screen relative">
       <Script src="https://cdn.lordicon.com/lordicon.js" />
@@ -76,12 +79,12 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-[#4ae06b]/50 cursor-pointer"
+                className="group bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-[#3ee366]/50 cursor-pointer"
               >
                 <div className="flex justify-center mb-6">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white text-center group-hover:text-[#4ae06b] transition-colors duration-300">
+                <h3 className="text-2xl font-semibold mb-2 text-white text-center group-hover:text-[#3ee366] transition-colors duration-300">
                   <AnimatedUnderline>
                     {service.title}
                   </AnimatedUnderline>
@@ -122,20 +125,25 @@ export default function AboutPage() {
             <h2 className="text-4xl font-bold mb-8 text-white">
               <AnimatedUnderline>Ready to collaborate?</AnimatedUnderline>
             </h2>
-            <Link
-              href="/contact"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="inline-block group/contact relative"
             >
-              <span className="block bg-[#4ae06b] text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-[#4ae06b]/90 transition-colors">
-                <AnimatedUnderline className="py-1">Get in Touch</AnimatedUnderline>
+              <span className="block bg-black text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-[#3ee366] hover:text-black transition-colors">
+                Get in Touch
               </span>
-            </Link>
+            </button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <Footer />
+
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   )
 } 

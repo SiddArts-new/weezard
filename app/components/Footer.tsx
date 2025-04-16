@@ -46,7 +46,7 @@ export default function Footer() {
           <div className="md:text-right flex justify-end items-start gap-4">
             <button 
               onClick={scrollToTop}
-              className="border border-black dark:border-white p-3 hover:bg-[#4ae06b] hover:text-white dark:hover:bg-[#4ae06b] dark:hover:text-black transition-colors"
+              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-colors"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-6 h-6" />
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 text-sm dark:text-gray-300">
-          <p>© {new Date().getFullYear()} <span className="hover:text-[#4ae06b] transition-colors cursor-pointer">
+          <p>© {new Date().getFullYear()} <span className="hover:text-[#3ee366] transition-colors cursor-pointer">
             <AnimatedUnderline>Weezard</AnimatedUnderline>
           </span>. All rights reserved.</p>
         </div>

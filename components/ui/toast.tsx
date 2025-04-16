@@ -31,7 +31,7 @@ export function Toast({ message, isVisible, onClose }: ToastProps) {
         >
           <div className="bg-white dark:bg-gray-800 text-black dark:text-white px-6 py-4 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
             <div className="flex items-center space-x-3">
-              <CheckCircle2 className="h-5 w-5 text-[#4ae06b]" />
+              <CheckCircle2 className="h-5 w-5 text-[#3ee366]" />
               <p className="text-sm font-medium">{message}</p>
             </div>
           </div>

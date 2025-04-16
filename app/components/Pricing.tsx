@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import { SparkleButton } from '@/components/ui/sparkle-button'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 const tiers = [
   {
@@ -90,11 +91,15 @@ export default function Pricing() {
                   ))}
                 </ul>
                 {tier.name === 'Professional' ? (
-                  <SparkleButton>Get Started</SparkleButton>
+                  <Link href="/sorry">
+                    <SparkleButton>Get Started</SparkleButton>
+                  </Link>
                 ) : (
-                  <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-white dark:text-black hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
-                    Get Started
-                  </button>
+                  <Link href="/sorry">
+                    <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-white dark:text-black hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
+                      Get Started
+                    </button>
+                  </Link>
                 )}
               </div>
             </motion.div>

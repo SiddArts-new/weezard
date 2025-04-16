@@ -22,7 +22,7 @@ export function LordIcon({
     <>
       <Script src="https://cdn.lordicon.com/lordicon.js" />
       <div 
-        className={`relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300 ${className}`} 
+        className={`relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#3ee366]/30 hover:border-[#3ee366] hover:bg-[#3ee366]/10 transition-all duration-300 ${className}`} 
         style={{ width: size + 32, height: size + 32 }}
         dangerouslySetInnerHTML={{
           __html: `<lord-icon

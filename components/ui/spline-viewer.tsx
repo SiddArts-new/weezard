@@ -8,6 +8,7 @@ declare global {
       'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
         url: string;
         'loading-anim-type'?: string;
+        'hide-logo'?: boolean;
       }, HTMLElement>;
     }
   }
@@ -34,6 +35,7 @@ export const SplineViewer: React.FC<SplineViewerProps> = ({ url, className }) =>
   return (
     <spline-viewer 
       loading-anim-type="none" 
+      hide-logo={true}
       url={url}
       className={className}
     />
