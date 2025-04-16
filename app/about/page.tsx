@@ -129,7 +129,7 @@ export default function AboutPage() {
               onClick={() => setIsModalOpen(true)}
               className="inline-block group/contact relative"
             >
-              <span className="block bg-black text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-[#3ee366] hover:text-black transition-colors">
+              <span className="block bg-white text-black px-8 py-3 rounded-lg text-lg font-medium hover:bg-[#3ee366] hover:text-black dark:bg-black dark:text-white hover:dark:bg-[#3ee366] hover:dark:text-black transition-colors">
                 Get in Touch
               </span>
             </button>
