@@ -8,7 +8,10 @@ const nextConfig = {
     },
   },
   images: {
-    domains: ['cdn.lordicon.com'],
+    domains: [
+      'images.unsplash.com',
+      'cdn.lordicon.com'
+    ],
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false };

@@ -43,11 +43,11 @@ export function EmailDrawer() {
         <DrawerContent>
           <div className="mx-auto w-full max-w-sm">
             <DrawerHeader>
-              <DrawerTitle>Subscribe for Upcoming Offers</DrawerTitle>
-              <DrawerDescription>Stay updated with our latest news and updates.</DrawerDescription>
+              <DrawerTitle className="text-black dark:text-white">Subscribe for Upcoming Offers</DrawerTitle>
+              <DrawerDescription className="text-black/80 dark:text-white/80">Stay updated with our latest news and updates.</DrawerDescription>
             </DrawerHeader>
             <div className="p-4">
-              <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-1">
                 <div className="flex flex-col space-y-2">
                   <label htmlFor="email" className="text-sm font-medium">
                     Email Address
@@ -62,7 +62,7 @@ export function EmailDrawer() {
                     required
                   />
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-600 dark:text-gray-400">
                   By subscribing, you agree to receive marketing communications from us.
                   You can unsubscribe at any time.
                 </p>

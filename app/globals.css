@@ -4,86 +4,7 @@
 
 @layer base {
   :root {
-    --background: 45, 29%, 97%;
-    --foreground: 222.2 84% 4.9%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-  }
-
-  * {
-    @apply transition-colors duration-200;
-  }
-
-  html {
-    @apply antialiased;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  /* Hide cursor on all elements */
-  * {
-    cursor: none !important;
-  }
-
-  /* Show pointer cursor on interactive elements when custom pointer is active */
-  a, button, [role="button"], input, textarea, select, .cursor-pointer {
-    cursor: none !important;
-  }
-}
-
-:root {
-  --background: 45, 29%, 97%;
-  --foreground: 222.2 84% 4.9%;
-}
-
-[class~="dark"] {
-  --background: 222.2 84% 4.9%;
-  --foreground: 0 0% 100%;
-}
-
-body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
-}
-
-spline-viewer {
-  --background-color: transparent !important;
-}
-
-/* Hide Spline logo */
-spline-viewer::part(logo) {
-  display: none !important;
-}
-
-@layer utilities {
-  .animate-spin-slow {
-    animation: spin 20s linear infinite;
-  }
-  .animate-pulse-magic {
-    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@layer base {
-  .theme {
-    --animate-pulse: pulse var(--duration) ease-out infinite;
-  }
-  :root {
-    --background: 45, 29%, 97%;
+    --background: 40, 33%, 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -126,25 +47,65 @@ spline-viewer::part(logo) {
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
+
+  html {
+    @apply antialiased;
+  }
+
   body {
     @apply bg-background text-foreground;
+    /* Add subtle texture to reduce eye strain */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
+                     linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    outline: 2px solid #3ee366;
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-@theme inline {
-  @keyframes pulse {
-  0%, 100% {
-    boxShadow: 0 0 0 0 var(--pulse-color);
-    }
-  50% {
-    boxShadow: 0 0 0 8px var(--pulse-color);
-    }
+/* Spline viewer customization */
+spline-viewer {
+  --background-color: transparent !important;
+}
+
+spline-viewer::part(logo) {
+  display: none !important;
+}
+
+/* Animations */
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  .animate-pulse-magic {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -157,24 +118,4 @@ spline-viewer::part(logo) {
     transform: scale(1.05);
     opacity: 0.4;
   }
-}
-
-.animate-pulse {
-  animation: pulse var(--duration, 1.5s) cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes magic-pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.4;
-  }
-}
-
-.magic-button-pulse {
-  animation: magic-pulse var(--duration, 1.5s) cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  background-color: var(--pulse-color, rgba(0, 0, 0, 0.1));
 }

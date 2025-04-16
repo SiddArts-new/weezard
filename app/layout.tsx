@@ -2,9 +2,9 @@ import React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { GlobalPointer } from '@/components/ui/global-pointer'
-import { ScrollProgressDemo } from '@/app/components/ScrollProgressDemo'
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from '@/components/theme-provider'
+import { ScrollProgress } from '@/components/ui/scroll-progress'
+import { CursorCompanion, CompanionProvider } from '@/components/ui/cursor-companion'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,11 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} cursor-none`}>
+      <body className={inter.className}>
         <ThemeProvider>
-          <GlobalPointer />
-          <ScrollProgressDemo />
-          {children}
+          <CompanionProvider>
+            <ScrollProgress />
+            <CursorCompanion />
+            {children}
+          </CompanionProvider>
         </ThemeProvider>
       </body>
     </html>

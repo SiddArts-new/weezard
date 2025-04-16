@@ -1,10 +1,19 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { VelocityScroll } from "@/components/ui/velocity-scroll"
-import { SplineViewer } from "@/components/ui/spline-viewer"
+import dynamic from 'next/dynamic'
 import { CompanyLogo } from "@/components/ui/company-logo"
 import { ConsultationModal } from '@/components/ui/consultation-modal'
+
+const SplineViewer = dynamic(() => import('@/components/ui/spline-viewer').then(mod => mod.default), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+      <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-[#3ee366] rounded-full animate-spin" />
+    </div>
+  )
+})
 
 const COMPANIES = [
   { name: 'Amazon', color: '#FF9900', logo: '/amazon.svg' },
@@ -39,10 +48,16 @@ const Hero = () => {
           
           <div className="relative">
             <div className="relative w-full h-[400px]">
-              <SplineViewer 
-                url="https://prod.spline.design/im34Q0bGwdMea0iP/scene.splinecode"
-                className="w-full h-full"
-              />
+              <Suspense fallback={
+                <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+                  <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-[#3ee366] rounded-full animate-spin" />
+                </div>
+              }>
+                <SplineViewer 
+                  url="https://prod.spline.design/im34Q0bGwdMea0iP/scene.splinecode"
+                  className="w-full h-full"
+                />
+              </Suspense>
             </div>
           </div>
         </div>

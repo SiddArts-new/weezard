@@ -8,7 +8,7 @@ import {
   useSpring,
   useTransform,
   useVelocity,
-  useAnimation,
+  animate,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ interface VelocityScrollProps extends React.HTMLAttributes<HTMLDivElement> {
   numRows?: number;
 }
 
-interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ParallaxProps {
   children: React.ReactNode;
   baseVelocity: number;
 }
@@ -62,9 +62,14 @@ function ParallaxText({
     };
 
     calculateRepetitions();
+    const resizeObserver = new ResizeObserver(calculateRepetitions);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
 
-    window.addEventListener("resize", calculateRepetitions);
-    return () => window.removeEventListener("resize", calculateRepetitions);
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [children]);
 
   const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
@@ -85,15 +90,18 @@ function ParallaxText({
   });
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full overflow-hidden whitespace-nowrap"
-      {...props}
-    >
-      <motion.div className="inline-block" style={{ x }}>
-        {Array.from({ length: repetitions }).map((_, i) => (
-          <span key={i} ref={i === 0 ? textRef : null}>
-            {children}{" "}
+    <div ref={containerRef} className="overflow-hidden whitespace-nowrap">
+      <motion.div
+        className="inline-block will-change-transform"
+        style={{ x }}
+        {...props}
+      >
+        <span ref={textRef} className="inline-block">
+          {children}
+        </span>
+        {Array.from({ length: repetitions - 1 }).map((_, i) => (
+          <span key={i} className="inline-block">
+            {children}
           </span>
         ))}
       </motion.div>
@@ -112,7 +120,7 @@ export function VelocityScroll({
     <div
       className={cn(
         "relative w-full text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem]",
-        className,
+        className
       )}
       {...props}
     >
@@ -136,43 +144,47 @@ const COMPANIES = [
 ];
 
 export function VelocityScrollCompanies() {
-  const controls = useAnimation();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="relative flex items-center overflow-hidden"
-      style={{
-        height: '100px',
-      }}
+      ref={containerRef}
+      className="relative flex w-full overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="flex gap-12 whitespace-nowrap"
-        animate={controls}
-        style={{ x: 0 }}
+        className="flex gap-6 py-12"
+        animate={{
+          x: isHovered ? 0 : "-100%"
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+          repeatType: "loop"
+        }}
       >
-        {[...Array(2)].map((_, i) => (
-          <div key={i} className="flex gap-12">
-            {COMPANIES.map((company, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 text-muted-foreground"
-              >
-                <Image
-                  src={company.logo}
-                  alt={company.name}
-                  width={32}
-                  height={32}
-                  className={cn(
-                    "grayscale transition-all",
-                    company.invert && "invert dark:invert-0"
-                  )}
-                />
-                <span className="text-sm font-medium">{company.name}</span>
-                {index !== COMPANIES.length - 1 && (
-                  <span className="text-sm">•</span>
-                )}
-              </div>
-            ))}
+        {COMPANIES.map((company, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-2 text-muted-foreground"
+          >
+            <Image
+              src={company.logo}
+              alt={company.name}
+              width={32}
+              height={32}
+              className={cn(
+                "grayscale transition-all",
+                company.invert && "invert dark:invert-0"
+              )}
+            />
+            <span className="text-sm font-medium">{company.name}</span>
+            {index !== COMPANIES.length - 1 && (
+              <span className="text-sm">•</span>
+            )}
           </div>
         ))}
       </motion.div>

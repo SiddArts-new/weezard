@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { AnimatedUnderline } from '@/components/ui/animated-underline'
 import { ArrowUp, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/components/theme-provider'
+import { useCompanion } from '@/components/ui/cursor-companion'
 
 const mainLinks = [
   { name: 'HOME', href: '/' },
@@ -25,8 +26,17 @@ const socialLinks = [
 
 export default function Footer() {
   const { theme, toggleTheme } = useTheme()
+  const { companion, setCompanion } = useCompanion()
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleCompanionToggle = (type: 'wizard' | 'ghost' | 'cat') => {
+    if (companion === type) {
+      setCompanion(null) // Turn off if already selected
+    } else {
+      setCompanion(type) // Switch to new companion
+    }
   }
 
   return (
@@ -40,29 +50,72 @@ export default function Footer() {
             </p>
             <Link 
               href="mailto:info@weezard.studio" 
-              className="inline-block mt-4 text-black dark:text-white hover:opacity-70 transition-opacity"
+              className="inline-block mt-4 text-black dark:text-white hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+              aria-label="Send email to info@weezard.studio"
             >
               info@weezard.studio
             </Link>
           </div>
-          <div className="md:text-right flex justify-end items-start gap-4">
-            <button 
-              onClick={toggleTheme}
-              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105"
-              aria-label="Toggle theme"
-            >
-              <div className="relative w-6 h-6">
-                <Sun className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
-                <Moon className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
+          <div className="md:text-right flex flex-col items-end gap-4">
+            {/* Companion Selector */}
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium">Companions:</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleCompanionToggle('wizard')}
+                  className={`border p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                    companion === 'wizard'
+                      ? 'border-[#3ee366] bg-[#3ee366] text-white'
+                      : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
+                  }`}
+                  aria-label={companion === 'wizard' ? 'Turn off wizard companion' : 'Select wizard companion'}
+                >
+                  🧙‍♂️
+                </button>
+                <button
+                  onClick={() => handleCompanionToggle('ghost')}
+                  className={`border p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                    companion === 'ghost'
+                      ? 'border-[#3ee366] bg-[#3ee366] text-white'
+                      : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
+                  }`}
+                  aria-label={companion === 'ghost' ? 'Turn off ghost companion' : 'Select ghost companion'}
+                >
+                  👻
+                </button>
+                <button
+                  onClick={() => handleCompanionToggle('cat')}
+                  className={`border p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                    companion === 'cat'
+                      ? 'border-[#3ee366] bg-[#3ee366] text-white'
+                      : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
+                  }`}
+                  aria-label={companion === 'cat' ? 'Turn off cat companion' : 'Select cat companion'}
+                >
+                  🐱
+                </button>
               </div>
-            </button>
-            <button 
-              onClick={scrollToTop}
-              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp className="w-6 h-6" />
-            </button>
+            </div>
+            {/* Theme and Scroll Buttons */}
+            <div className="flex gap-2">
+              <button 
+                onClick={toggleTheme}
+                className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                <div className="relative w-6 h-6">
+                  <Sun className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} aria-hidden="true" />
+                  <Moon className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} aria-hidden="true" />
+                </div>
+              </button>
+              <button 
+                onClick={scrollToTop}
+                className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                aria-label="Scroll to top of page"
+              >
+                <ArrowUp className="w-6 h-6" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -82,7 +135,8 @@ export default function Footer() {
               <Link 
                 key={link.name}
                 href={link.href} 
-                className="hover:opacity-70 transition-opacity"
+                className="hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                aria-label={`Navigate to ${link.name} page`}
               >
                 <AnimatedUnderline className="py-1">
                   {link.name}
@@ -96,7 +150,10 @@ export default function Footer() {
               <Link 
                 key={link.name}
                 href={link.href} 
-                className="hover:opacity-70 transition-opacity"
+                className="hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                aria-label={`Visit our ${link.name} profile`}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
                 <AnimatedUnderline className="py-1">
                   {link.name}
