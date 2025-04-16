@@ -1,15 +1,12 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import Script from 'next/script'
 
 interface LordIconProps {
   src: string
   trigger?: string
-  colors?: {
-    primary?: string
-    secondary?: string
-  }
+  colors?: string
   size?: number
   className?: string
 }
@@ -17,31 +14,22 @@ interface LordIconProps {
 export function LordIcon({ 
   src, 
   trigger = "hover",
-  colors = { primary: "#121331", secondary: "#3ee366" },
-  size = 250,
-  className 
+  colors = "primary:#121331,secondary:#3ee366",
+  size = 64,
+  className = ""
 }: LordIconProps) {
-  useEffect(() => {
-    // This ensures the lord-icon element is defined after the script loads
-    return () => {
-      const element = document.querySelector('lord-icon');
-      if (element) {
-        element.remove();
-      }
-    }
-  }, []);
-
   return (
     <>
       <Script src="https://cdn.lordicon.com/lordicon.js" />
-      <div
+      <div 
+        className={`relative flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm p-4 border-2 border-[#4ae06b]/30 hover:border-[#4ae06b] hover:bg-[#4ae06b]/10 transition-all duration-300 ${className}`} 
+        style={{ width: size + 32, height: size + 32 }}
         dangerouslySetInnerHTML={{
           __html: `<lord-icon
             src="${src}"
             trigger="${trigger}"
-            colors="primary:${colors.primary},secondary:${colors.secondary}"
+            colors="${colors}"
             style="width: ${size}px; height: ${size}px"
-            class="${className || ''}"
           ></lord-icon>`
         }}
       />
