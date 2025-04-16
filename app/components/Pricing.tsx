@@ -58,15 +58,20 @@ export default function Pricing() {
           {tiers.map((tier, index) => (
             <motion.div
               key={tier.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ 
                 opacity: 1, 
                 y: tier.popular ? -20 : 0,
                 scale: tier.popular ? 1.05 : 1
               }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ 
+                duration: 0.8,
+                delay: index * 0.5,
+                ease: [0.4, 0, 0.2, 1]
+              }}
               className={cn(
-                "relative bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300",
+                "relative bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 h-full flex flex-col",
                 tier.popular ? "shadow-xl hover:shadow-2xl z-10" : "shadow-sm hover:shadow-md"
               )}
             >
@@ -90,17 +95,19 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                {tier.name === 'Professional' ? (
-                  <Link href="/sorry">
-                    <SparkleButton className="bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white">Get Started</SparkleButton>
-                  </Link>
-                ) : (
-                  <Link href="/sorry">
-                    <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
-                      Get Started
-                    </button>
-                  </Link>
-                )}
+                <div className="mt-auto">
+                  {tier.name === 'Professional' ? (
+                    <Link href="/sorry">
+                      <SparkleButton className="bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white">Get Started</SparkleButton>
+                    </Link>
+                  ) : (
+                    <Link href="/sorry">
+                      <button className="w-full py-2 px-4 rounded-lg bg-black text-white dark:bg-black dark:text-white hover:bg-[#3ee366] dark:hover:bg-[#3ee366] dark:hover:text-white transition-colors">
+                        Get Started
+                      </button>
+                    </Link>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}
