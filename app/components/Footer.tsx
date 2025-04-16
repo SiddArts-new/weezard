@@ -4,7 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { AnimatedUnderline } from '@/components/ui/animated-underline'
-import { ArrowUp } from 'lucide-react'
+import { ArrowUp, Moon, Sun } from 'lucide-react'
+import { useTheme } from '@/components/theme-provider'
 
 const mainLinks = [
   { name: 'HOME', href: '/' },
@@ -23,12 +24,13 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const { theme, toggleTheme } = useTheme()
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
-    <footer className="bg-[#f7f7f7] dark:bg-gray-900 text-black dark:text-white py-12">
+    <footer className="bg-[#f7f7f7] dark:bg-gray-900 text-black dark:text-white py-12 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           <div>
@@ -45,8 +47,18 @@ export default function Footer() {
           </div>
           <div className="md:text-right flex justify-end items-start gap-4">
             <button 
+              onClick={toggleTheme}
+              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105"
+              aria-label="Toggle theme"
+            >
+              <div className="relative w-6 h-6">
+                <Sun className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
+                <Moon className={`w-6 h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
+              </div>
+            </button>
+            <button 
               onClick={scrollToTop}
-              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-colors"
+              className="border border-black dark:border-white p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-6 h-6" />
