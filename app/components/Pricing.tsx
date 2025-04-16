@@ -61,7 +61,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ 
                 opacity: 1, 
-                y: tier.popular ? -20 : 0,
+                y: tier.popular ? -10 : 0,
                 scale: tier.popular ? 1.05 : 1
               }}
               viewport={{ once: false, margin: "-100px" }}
@@ -76,7 +76,7 @@ export default function Pricing() {
               )}
             >
               {tier.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black dark:bg-white px-3 py-1 rounded-full text-xs font-semibold text-white dark:text-black tracking-wide uppercase transform">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black dark:bg-white px-3 py-1 rounded-full text-xs font-semibold text-white dark:text-black tracking-wide uppercase transform">
                   Best Value
                 </div>
               )}
