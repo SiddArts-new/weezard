@@ -7,7 +7,9 @@ import { AnimatedUnderline } from '@/components/ui/animated-underline'
 import { ArrowUp, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/components/theme-provider'
 import { useCompanion } from '@/components/ui/cursor-companion'
+import { TextAlignLeftIcon } from '@radix-ui/react-icons'
 
+// main navigation links
 const mainLinks = [
   { name: 'HOME', href: '/' },
   { name: 'ABOUT', href: '/about' },
@@ -17,6 +19,7 @@ const mainLinks = [
   { name: 'CONTACT', href: '/sorry' }
 ]
 
+// social media links
 const socialLinks = [
   { name: 'TWITTER', href: '/sorry' },
   { name: 'INSTAGRAM', href: 'https://www.instagram.com/intasidd_26/' },
@@ -33,9 +36,9 @@ export default function Footer() {
 
   const handleCompanionToggle = (type: 'wizard' | 'ghost' | 'cat') => {
     if (companion === type) {
-      setCompanion(null) // Turn off if already selected
+      setCompanion(null) // turn off if already selected
     } else {
-      setCompanion(type) // Switch to new companion
+      setCompanion(type) // switch to new companion
     }
   }
 
@@ -57,7 +60,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="md:text-right flex flex-col items-start md:items-end gap-4">
-            {/* Companion Selector */}
+            {/* companion selector */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
               <span className="text-sm font-medium">Cursor Companions:</span>
               <div className="flex gap-2">
@@ -96,7 +99,7 @@ export default function Footer() {
                 </button>
               </div>
             </div>
-            {/* Theme and Scroll Buttons */}
+            {/* theme and scroll buttons */}
             <div className="flex gap-2">
               <button 
                 onClick={toggleTheme}
@@ -145,7 +148,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 items-end w-full">
             {socialLinks.map((link) => (
               <Link 
                 key={link.name}

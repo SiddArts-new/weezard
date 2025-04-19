@@ -58,19 +58,19 @@
 
   body {
     @apply bg-background text-foreground;
-    /* Add subtle texture to reduce eye strain */
+    /* add subtle texture to reduce eye strain */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
                      linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
-  /* Focus styles */
+  /* focus styles */
   *:focus-visible {
     outline: 2px solid #3ee366;
     outline-offset: 2px;
   }
 
-  /* Reduced motion */
+  /* reduced motion */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
@@ -81,7 +81,7 @@
   }
 }
 
-/* Spline viewer customization */
+/* spline viewer styles */
 spline-viewer {
   --background-color: transparent !important;
 }
@@ -90,7 +90,7 @@ spline-viewer::part(logo) {
   display: none !important;
 }
 
-/* Animations */
+/* animation styles */
 @layer utilities {
   .animate-spin-slow {
     animation: spin 20s linear infinite;

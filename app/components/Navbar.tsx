@@ -16,6 +16,7 @@ import {
 import { EmailDrawer } from "@/components/ui/email-drawer"
 import React from 'react'
 
+// icon components
 const Icons = {
   Email: (props) => <MailIcon {...props} />,
   linkedin: (props) => (
@@ -37,11 +38,13 @@ const Icons = {
   email: () => <EmailDrawer />,
 }
 
+// navigation links
 const LINKS = [
   { href: "/", icon: HomeIcon, label: "Home" },
   { href: "/about", icon: PencilIcon, label: "Blog" },
 ]
 
+// social media links
 const SOCIAL = {
   GitHub: {
     name: "GitHub",
@@ -100,7 +103,7 @@ export const Navbar = () => {
             Weezard
           </Link>
           
-          {/* Mobile menu button */}
+          {/* mobile menu button */}
           <button
             className="md:hidden p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -130,7 +133,7 @@ export const Navbar = () => {
             </svg>
           </button>
 
-          {/* Desktop menu */}
+          {/* desktop menu */}
           <div className="hidden md:block">
             <TooltipProvider>
               <div className="flex h-16 items-end gap-4 rounded-2xl bg-black/5 dark:bg-white/5">
@@ -213,7 +216,7 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* mobile menu */}
         <motion.div
           initial={false}
           animate={{ height: isMobileMenuOpen ? "auto" : 0 }}
@@ -226,7 +229,9 @@ export const Navbar = () => {
                 href={link.href}
                 className="flex items-center gap-2 p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
               >
-                <link.icon className="h-5 w-5 dark:text-white" />
+                <div className="w-5 h-5 flex items-center justify-center">
+                  <link.icon className="h-5 w-5 dark:text-white" />
+                </div>
                 <span className="dark:text-white">{link.label}</span>
               </Link>
             ))}
