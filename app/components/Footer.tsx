@@ -148,7 +148,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex flex-col gap-2 items-end">
+          <div className="hidden md:flex md:flex-col gap-2 items-end">
             {socialLinks.map((link) => (
               <Link 
                 key={link.name}
