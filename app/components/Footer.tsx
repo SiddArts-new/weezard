@@ -43,30 +43,30 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#f7f7f7] dark:bg-gray-900 text-black dark:text-white py-8 md:py-12 transition-colors duration-300">
+    <footer className="bg-[#f7f7f7] dark:bg-gray-900 text-black dark:text-white py-6 md:py-12 transition-colors duration-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-24">
           <div>
-            <h2 className="text-xl md:text-2xl font-medium mb-2">CONTACT US</h2>
+            <h2 className="text-lg md:text-2xl font-medium mb-2">CONTACT US</h2>
             <p className="max-w-xs text-sm md:text-base dark:text-gray-300">
               We look forward to hearing from you. Email us to collaborate.
             </p>
             <Link 
               href="mailto:info@weezard.studio" 
-              className="inline-block mt-4 text-sm md:text-base text-black dark:text-white hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+              className="inline-block mt-3 text-sm md:text-base text-black dark:text-white hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
               aria-label="Send email to info@weezard.studio"
             >
               info@weezard.studio
             </Link>
           </div>
           <div className="md:text-right flex flex-col items-start md:items-end gap-4">
-            {/* companion selector */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            {/* companion selector - hidden on mobile */}
+            <div className="hidden md:flex md:flex-col md:items-center gap-4">
               <span className="text-sm font-medium">Cursor Companions:</span>
               <div className="flex gap-2">
                 <button
                   onClick={() => handleCompanionToggle('wizard')}
-                  className={`border p-2 md:p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                  className={`border p-2 md:p-3 transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
                     companion === 'wizard'
                       ? 'border-[#3ee366] bg-[#3ee366] text-white'
                       : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
@@ -77,7 +77,7 @@ export default function Footer() {
                 </button>
                 <button
                   onClick={() => handleCompanionToggle('ghost')}
-                  className={`border p-2 md:p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                  className={`border p-2 md:p-3 transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
                     companion === 'ghost'
                       ? 'border-[#3ee366] bg-[#3ee366] text-white'
                       : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
@@ -88,7 +88,7 @@ export default function Footer() {
                 </button>
                 <button
                   onClick={() => handleCompanionToggle('cat')}
-                  className={`border p-2 md:p-3 transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
+                  className={`border p-2 md:p-3 transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md ${
                     companion === 'cat'
                       ? 'border-[#3ee366] bg-[#3ee366] text-white'
                       : 'border-black dark:border-white hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black'
@@ -103,17 +103,17 @@ export default function Footer() {
             <div className="flex gap-2">
               <button 
                 onClick={toggleTheme}
-                className="border border-black dark:border-white p-2 md:p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                className="border border-black dark:border-white p-2 md:p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
                 <div className="relative w-5 h-5 md:w-6 md:h-6">
-                  <Sun className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} aria-hidden="true" />
-                  <Moon className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-300 ${theme === 'dark' ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} aria-hidden="true" />
+                  <Sun className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-200 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} aria-hidden="true" />
+                  <Moon className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-200 ${theme === 'dark' ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} aria-hidden="true" />
                 </div>
               </button>
               <button 
                 onClick={scrollToTop}
-                className="border border-black dark:border-white p-2 md:p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                className="border border-black dark:border-white p-2 md:p-3 hover:bg-[#3ee366] hover:text-white dark:hover:bg-[#3ee366] dark:hover:text-black transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
                 aria-label="Scroll to top of page"
               >
                 <ArrowUp className="w-5 h-5 md:w-6 md:h-6" aria-hidden="true" />
@@ -122,18 +122,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <div className="mb-4 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8">
+          <div className="order-2 md:order-none mb-2 md:mb-0">
             <Image
               src="/logo.svg"
               alt="Weezard Logo"
-              width={120}
-              height={120}
-              className="mb-4 fill-black dark:invert"
+              width={80}
+              height={80}
+              className="mb-4 fill-black dark:invert md:w-[120px] md:h-[120px]"
+              priority={false}
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2 mb-4 md:mb-0">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2 mb-4 md:mb-0 order-1 md:order-none">
             {mainLinks.map((link) => (
               <Link 
                 key={link.name}
