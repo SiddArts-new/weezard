@@ -148,12 +148,12 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex flex-col gap-2 items-end w-full">
+          <div className="flex flex-col gap-2 items-end">
             {socialLinks.map((link) => (
               <Link 
                 key={link.name}
                 href={link.href} 
-                className="text-sm md:text-base hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md"
+                className="text-sm md:text-base hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ee366] focus-visible:ring-offset-2 rounded-md "
                 aria-label={`Visit our ${link.name} profile`}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
