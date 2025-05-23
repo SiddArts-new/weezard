@@ -63,33 +63,35 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        
-        <div className="mt-12 md:mt-16 space-y-4 relative">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 dark:text-white">
-            Our Customers
-          </h2>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent" />
-            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent" />
-            <VelocityScroll 
-              defaultVelocity={3} 
-              numRows={2} 
-              className="text-black/50 dark:text-white/50"
-            >
-              {COMPANIES.map((company, index) => (
-                <React.Fragment key={company.name}>
-                  <span className="inline-flex items-center mx-3 md:mx-6" style={{ color: company.color }}>
-                    <CompanyLogo
-                      src={company.logo}
-                      alt={`${company.name} logo`}
-                      color={company.color}
-                    />
-                    <span className="text-xl md:text-2xl font-medium ml-2 md:ml-3">{company.name}</span>
-                  </span>
-                </React.Fragment>
-              ))}
-            </VelocityScroll>
-          </div>
+      </div>
+
+      {/* Edge-to-edge VelocityScroll section */}
+      <div className="mt-12 md:mt-16 space-y-4 w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+        <h2 className="text-xl md:text-3xl font-bold text-center mb-6 md:mb-12 dark:text-white">
+          Our Customers
+        </h2>
+        <div className="relative w-full h-24 md:h-40">
+          <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-white dark:from-gray-950 to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-white dark:from-gray-950 to-transparent pointer-events-none" />
+          <VelocityScroll 
+            defaultVelocity={3} 
+            numRows={2} 
+            className="text-black/50 dark:text-white/50 w-full h-full"
+          >
+            {COMPANIES.map((company, index) => (
+              <React.Fragment key={company.name}>
+                <span className="inline-flex items-center mx-2 md:mx-6" style={{ color: company.color }}>
+                  <CompanyLogo
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    color={company.color}
+                    className="w-6 h-6 md:w-10 md:h-10"
+                  />
+                  <span className="text-base md:text-2xl font-medium ml-1 md:ml-3">{company.name}</span>
+                </span>
+              </React.Fragment>
+            ))}
+          </VelocityScroll>
         </div>
       </div>
 
@@ -101,4 +103,4 @@ const Hero = () => {
   )
 }
 
-export default Hero 
+export default Hero
