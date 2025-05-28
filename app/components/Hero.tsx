@@ -99,6 +99,15 @@ const Hero = () => {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
+
+      {/* Rainbow animated background for the whole page */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        {Array.from({ length: 25 }).map((_, i) => (
+          <div key={i} className="rainbow" />
+        ))}
+        <div className="h" />
+        <div className="v" />
+      </div>
     </>
   )
 }
