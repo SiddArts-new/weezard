@@ -50,24 +50,17 @@ const Hero = () => {
           
           <div className="relative order-first md:order-last">
             <div className="relative w-full h-[300px] md:h-[400px]">
-              {/* Show image on mobile/tablet, SplineViewer on desktop */}
-              <img 
-                src="/Mobile-hero.png" 
-                alt="Hero visual" 
-                className="block md:hidden w-full h-full object-cover rounded-lg" 
-              />
-              <div className="hidden md:block w-full h-full">
-                <Suspense fallback={
-                  <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-                    <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-[#3ee366] rounded-full animate-spin" />
-                  </div>
-                }>
-                  <SplineViewer 
-                    url="https://prod.spline.design/im34Q0bGwdMea0iP/scene.splinecode"
-                    className="w-full h-full"
-                  />
-                </Suspense>
-              </div>
+              {/* Show SplineViewer on all devices */}
+              <Suspense fallback={
+                <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+                  <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-600 border-t-[#3ee366] rounded-full animate-spin" />
+                </div>
+              }>
+                <SplineViewer 
+                  url="https://prod.spline.design/im34Q0bGwdMea0iP/scene.splinecode"
+                  className="w-full h-full"
+                />
+              </Suspense>
             </div>
           </div>
         </div>
