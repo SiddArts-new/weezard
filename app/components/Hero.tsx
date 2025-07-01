@@ -52,7 +52,7 @@ const Hero = () => {
             <div className="relative w-full h-[300px] md:h-[400px]">
               {/* Show image on mobile/tablet, SplineViewer on desktop */}
               <img 
-                src="/image-removebg-preview.png" 
+                src="/Mobile-hero.png" 
                 alt="Hero visual" 
                 className="block md:hidden w-full h-full object-cover rounded-lg" 
               />
